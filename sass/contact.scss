@@ -1,0 +1,46 @@
+#container {
+	.content {
+		h2 {
+			text-align: center;
+		}
+		h3 {
+			margin-bottom: 50px;
+			text-align: center;
+		}
+		#emailHead {
+			margin-bottom: 30px;
+		}
+		form{
+			#name {
+				background-color: rgba(51,51,51,.7);
+				border: none;
+				margin-bottom: 15px;
+				&:focus {
+					outline: none;
+				}
+			}
+			#email {
+				background-color: rgba(51,51,51,.7);
+				border: none;
+				margin-bottom: 15px;
+				&:focus {
+					outline: none;
+				}
+			}
+			#emailContent {
+				display: block;
+				height:300px;
+				margin-bottom: 15px;
+				background-color: rgba(51,51,51,.7);
+				border: none;
+				&:focus {
+					outline: none;
+				}
+			}
+			#submit {
+				color: rgb(51,51,51);
+				margin-bottom: 50px;
+			}
+		}
+	}
+}

@@ -1,0 +1,36 @@
+#container .content h2 {
+  text-align: center; }
+
+#container .content h3 {
+  margin-bottom: 50px;
+  text-align: center; }
+
+#container .content #emailHead {
+  margin-bottom: 30px; }
+
+#container .content form #name {
+  background-color: rgba(51, 51, 51, 0.7);
+  border: none;
+  margin-bottom: 15px; }
+  #container .content form #name:focus {
+    outline: none; }
+
+#container .content form #email {
+  background-color: rgba(51, 51, 51, 0.7);
+  border: none;
+  margin-bottom: 15px; }
+  #container .content form #email:focus {
+    outline: none; }
+
+#container .content form #emailContent {
+  display: block;
+  height: 300px;
+  margin-bottom: 15px;
+  background-color: rgba(51, 51, 51, 0.7);
+  border: none; }
+  #container .content form #emailContent:focus {
+    outline: none; }
+
+#container .content form #submit {
+  color: #333333;
+  margin-bottom: 50px; }

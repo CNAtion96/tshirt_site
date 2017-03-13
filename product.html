@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="icon" href="favIcon.png"/>
+	<title>E.T. Design | Products</title>
+	<script src="store.js"></script>
+	<link rel="stylesheet" type="text/css" href="bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap-theme.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/product.css">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<body>
+	<header>
+		<div class="col-md-12" id="headerText">
+			<h2>E.T.</h2>
+			<p><i class="fa fa-reddit-alien" aria-hidden="true"></i></p>
+			<h2>Design</h2>
+		</div>
+	</header>
+	<div class="container-fluid" id="container">
+		<div class="row">
+			<aside class="col-md-2 left">
+				<!--Navigation between pages-->
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="about.html">About Us</a></li>
+					<li><a href="product.html">Products</a></li>
+					<li><a href="contact.html">Contact Us</a></li>
+				</ul>
+				<div class="cart">
+					<h4>Cart:</h4>
+
+					<p>Subtotal: $<span id="subtotal">0.00</span></p>
+					<p>Total: $<span id="total">0.00</span></p>
+				</div>
+			</aside>
+			<div class="col-md-8 col-md-offset-1 content">
+				<h2>Products</h2>
+				<div class="shirts">
+					<div class="product first">
+						<div class="productImg">
+							<div id="logo">
+								<img src="black_shirt_front.jpg">
+							</div>
+							<div>
+								<p>E.T. Design</p>
+							</div>
+						</div>
+						<div class="productInfo">
+							<h3>Description:</h3>
+							<p>Show case your love for your favorite brand with this E.T. Design Logo shirt.</p>
+							<div>
+								<div class="custom">
+									<h3>Color:</h3>
+									<select id="logoColor">
+										<option value="black">Black</option>
+										<option value="red">Red</option>
+										<option value="blue">Blue</option>
+										<option value="gray">Grey</option>
+										<option value="white">White</option>
+									</select>
+								</div>
+								<div class="custom sizes">
+									<h3>Size:</h3>
+									<select id="size" placeholder"size">
+										<option value="small">S</option>
+										<option value="medium">M</option>}
+										<option value="large">L</option>}
+										<option value="extraLarge">XL</option>}
+									</select>
+								</div>
+							</div>
+							<button id="addLogoToCart">Add to cart</button>
+							<h3>Price: $19.99</h3>
+						</div>
+					</div>
+					<div class="product second">
+						<div class="productImg">
+							<div id="spaceShip">
+								<img src="black_shirt_front.jpg">
+							</div>
+							<div>
+								<p>Space Ship</p>
+							</div>
+						</div>
+						<div class="productInfo">
+							<h3>Description:</h3>
+							<p>Abduct your friends attention with this interstellar shirt.</p>
+							<div>
+								<div class="custom">
+									<h3>Color:</h3>
+									<select id="spaceShipColor">
+										<option value="black">Black</option>
+										<option value="red">Red</option>
+										<option value="blue">Blue</option>
+										<option value="gray">Grey</option>
+										<option value="white">White</option>
+									</select>
+								</div>
+								<div class="custom sizes">
+									<h3>Size:</h3>
+									<select id="size" placeholder"size">
+										<option value="small">S</option>
+										<option value="medium">M</option>}
+										<option value="large">L</option>}
+										<option value="extraLarge">XL</option>}
+									</select>
+								</div>
+							</div>
+							<button id="addSpaceShipToCart">Add to cart</button>
+							<h3>Price: $19.99</h3>
+						</div>
+					</div>
+					<div class="product third">
+						<div class="productImg">
+							<div id="alien">
+								<img src="black_shirt_front.jpg">
+							</div>
+							<div>
+								<p>Alien</p>
+							</div>
+						</div>
+						<div class="productInfo">
+							<h3>Description:</h3>
+							<p>Pay homage to your favorite alien.</p>
+							<div>
+								<div class="custom">
+									<h3>Color:</h3>
+									<select id="alienColor">
+										<option value="black">Black</option>
+										<option value="red">Red</option>
+										<option value="blue">Blue</option>
+										<option value="gray">Grey</option>
+										<option value="white">White</option>
+									</select>
+								</div>
+								<div class="custom sizes">
+									<h3>Size:</h3>
+									<select id="size" placeholder"size">
+										<option value="small">S</option>
+										<option value="medium">M</option>}
+										<option value="large">L</option>}
+										<option value="extraLarge">XL</option>}
+									</select>
+								</div>
+							</div>
+							<button id="addAlienToCart">Add to cart</button>
+							<h3>Price: $19.99</h3>
+						</div>
+					</div>
+					<div class="product fourth">
+						<div class="productImg">
+							<div id="predator">
+								<img src="black_shirt_front.jpg">
+							</div>
+							<div>
+								<p>Predator</p>
+							</div>
+						</div>
+						<div class="productInfo">
+							<h3>Description:</h3>
+							<p>Maybe your prefer the predator and thats okay. We all go through fazes.</p>
+							<div>
+								<div class="custom">
+									<h3>Color:</h3>
+									<select id="predatorColor">
+										<option value="black">Black</option>
+										<option value="red">Red</option>
+										<option value="blue">Blue</option>
+										<option value="gray">Grey</option>
+										<option value="white">White</option>
+									</select>
+								</div>
+								<div class="custom sizes">
+									<h3>Size:</h3>
+									<select id="size" placeholder"size">
+										<option value="small">S</option>
+										<option value="medium">M</option>}
+										<option value="large">L</option>}
+										<option value="extraLarge">XL</option>}
+									</select>
+								</div>
+							</div>
+							<button id="addPredatorToCart">Add to cart</button>
+							<h3>Price: $19.99</h3>
+						</div>
+					</div>
+					<div class="product fourth">
+						<div class="productImg">
+							<div id="faceHugger">
+								<img src="black_shirt_front.jpg">
+							</div>
+							<div>
+								<p>Face Hugger</p>
+							</div>
+						</div>
+						<div class="productInfo">
+							<h3>Description:</h3>
+							<p>No matter which you prefer I think we can all agree these little guys are discusting.</p>
+							<div>
+								<div class="custom">
+									<h3>Color:</h3>
+									<select id="faceHuggerColor">
+										<option value="black">Black</option>
+										<option value="red">Red</option>
+										<option value="blue">Blue</option>
+										<option value="gray">Gray</option>
+										<option value="white">White</option>
+									</select>
+								</div>
+								<div class="custom sizes">
+									<h3>Size:</h3>
+									<select id="size" placeholder"size">
+										<option value="small">S</option>
+										<option value="medium">M</option>}
+										<option value="large">L</option>}
+										<option value="extraLarge">XL</option>}
+									</select>
+								</div>
+							</div>
+							<button id="addFHToCart">Add to cart</button>
+							<h3>Price: $19.99</h3>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>
+	<script src="js/product.js" type="text/javascript" charset="utf-8" async defer></script>
+</body>
+</html>

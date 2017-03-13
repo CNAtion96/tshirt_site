@@ -1,0 +1,14 @@
+#container {
+	.row {
+		.content {
+			h2 {
+				text-align: center;
+			}
+			#aboutText {
+				line-height: 2;
+				text-indent: 50px;
+				font-size: 1.25em;
+			}
+		}
+	}
+}
