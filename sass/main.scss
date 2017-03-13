@@ -61,6 +61,13 @@ header{
 			}
 		}
 	}
+	.mobileMenu {
+		display: none;
+		max-width: 200px;
+		#mobileList {
+			display: inline
+		}
+	}
 	.content {
 		border: 2px solid black;
 		background-color: rgba(64,64,64,.5);
@@ -105,5 +112,18 @@ header{
 				}
 			}
 		}
+	}
+}
+
+
+@media (max-width: 990px){
+	.mobileMenu {
+		display: block;
+		ul {
+			display: none;
+		}
+	}
+	#menu {
+		display: none;
 	}
 }

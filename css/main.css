@@ -38,6 +38,11 @@ header {
     #container .row .left a {
       color: lightgray;
       font-size: 20px; }
+  #container .mobileMenu {
+    display: none;
+    max-width: 200px; }
+    #container .mobileMenu #mobileList {
+      display: inline; }
   #container .content {
     border: 2px solid black;
     background-color: rgba(64, 64, 64, 0.5);
@@ -71,3 +76,11 @@ header {
           max-width: 100%;
           margin-top: 50px;
           margin-left: 265px; }
+
+@media (max-width: 990px) {
+  .mobileMenu {
+    display: block; }
+    .mobileMenu ul {
+      display: none; }
+  #menu {
+    display: none; } }
