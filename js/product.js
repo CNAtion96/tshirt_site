@@ -4,6 +4,7 @@ var addSpaceShipToCart = document.getElementById("addSpaceShipToCart");
 var addAlienToCart = document.getElementById("addAlienToCart");
 var addPredatorToCart = document.getElementById("addPredatorToCart");
 var addLogoToCart = document.getElementById("addLogoToCart");
+var cartStuff = document.getElementById("cartStuff");
 
 //set shirt price and initiate subtotal, total, and tax variables
 var subtotalBox = document.getElementById("subtotal");
@@ -383,12 +384,18 @@ faceHuggerNum.addEventListener('change',function(e){
 //add items to cart div
 function cartAdd(){
 	subtotal = 0;
+	var html = "";
 	cartItems.forEach(function(item){
 		subtotal += item.price * item.numToAdd;
+
+		html += `
+			<div><p>${item.name} is <span>${item.price}</span></p></div>
+			`;
 	})
 	subtotalBox.innerHTML = subtotal.toFixed(2);
 	var total = subtotal*1.065;
 	totalBox.innerHTML = total.toFixed(2);
+	cartStuff.innerHTML = html;
 }
 
 //add event listeners to buttons to add them to the cart
