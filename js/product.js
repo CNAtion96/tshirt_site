@@ -10,120 +10,58 @@ localStorage.setItem('subtotal','0');
 localStorage.setItem('total', '0');
 var subtotalStorage = localStorage.getItem('subtotal');
 var totalStorage = localStorage.getItem('total');
-var shirtPrice = 19.99;
 var subtotal = 0;
 var total = 0;
 var tax = 1.065;
 
-//variables to check if item is in the cart
-var faceHuggerInCart = false;
-var spaceShipInCart = false;
-var alienInCart = false;
-var predatorInCart = false;
-var logoInCart = false;
+//vars to grab selects (color & number)
+//colors
+var logoColor = document.getElementById("logoColor");
+var spaceShipColor = document.getElementById("spaceShipColor");
+var alienColor = document.getElementById("alienColor");
+var predatorColor = document.getElementById("predatorColor");
+var faceHuggerColor = document.getElementById("faceHuggerColor");
+//numbers
+var logoNum = document.getElementById("logoNum");
+var spaceShipNum = document.getElementById("spaceShipNum");
+var alienNum = document.getElementById("alienNum");
+var predatorNum = document.getElementById("predatorNum");
+var faceHuggerNum = document.getElementById("faceHuggerNum");
+
+//constructor to create tshirt
+function shirt(name, color, price, numInCart, numToAdd){
+    this.name = name;
+    this.color = color;
+    this.price = price;
+    this.numInCart = numInCart;
+	this.numToAdd = numToAdd;
+}
+
+//create shirts
+logo = new shirt("Logo","black",19.99,0);
+spaceShip = new shirt("Spaceship","black",19.99, 0, 0);
+alien = new shirt("Alien","black",19.99, 0, 0);
+predator = new shirt("Predator","black",19.99, 0, 0);
+faceHugger = new shirt("Face Hugger","black",19.99, 0, 0);
+
+//array to hold items in cart
+var cartItems = [];
+
+//add items to cart div
+function cartAdd(){
+	string = '';
+	cartItems.forEach(function(item){
+		string += '<div class="cartitem"><p>${item.name}</p><p>${item.price}</p><p id="${item}InCart">${item.numInCart}</p></div>';
+	})
+}
 
 //fuction to calculate the after tax total
 function calcTotal(totalSub, taxes) {
 	return((totalSub * taxes).toFixed(2));
 }
 
-//add event listeners to buttons to add them to the cart
-addFHToCart.addEventListener("click", function(){
-	if (faceHuggerInCart === false) {
-		subtotal += shirtPrice;
-		document.getElementById("subtotal").innerHTML = subtotal;
-		faceHuggerInCart = true;
-		total = calcTotal(subtotal,tax)
-		document.getElementById("total").innerHTML = total;
-	}
-	else {
-		subtotal -= shirtPrice;
-		document.getElementById("subtotal").innerHTML = subtotal;
-		faceHuggerInCart = false;
-		total = calcTotal(subtotal,tax)
-		document.getElementById("total").innerHTML = total;
-	}
-})
-
-addSpaceShipToCart.addEventListener("click", function(){
-	if (spaceShipInCart === false) {
-		subtotal += shirtPrice;
-		document.getElementById("subtotal").innerHTML = subtotal;
-		spaceShipInCart = true;
-		total = calcTotal(subtotal,tax)
-		document.getElementById("total").innerHTML = total;
-	}
-	else {
-		subtotal -= shirtPrice;
-		document.getElementById("subtotal").innerHTML = subtotal;
-		spaceShipInCart = false;
-		total = calcTotal(subtotal,tax)
-		document.getElementById("total").innerHTML = total;
-	}
-})
-
-addAlienToCart.addEventListener("click", function(){
-	if (alienInCart === false) {
-		subtotal += shirtPrice;
-		document.getElementById("subtotal").innerHTML = subtotal;
-		alienInCart = true;
-		total = calcTotal(subtotal,tax)
-		document.getElementById("total").innerHTML = total;
-	}
-	else {
-		subtotal -= shirtPrice;
-		document.getElementById("subtotal").innerHTML = subtotal;
-		alienInCart = false;
-		total = calcTotal(subtotal,tax)
-		document.getElementById("total").innerHTML = total;
-	}
-})
-
-addPredatorToCart.addEventListener("click", function(){
-	if (predatorInCart === false) {
-		subtotal += shirtPrice;
-		document.getElementById("subtotal").innerHTML = subtotal;
-		predatorInCart = true;
-		total = calcTotal(subtotal,tax)
-		document.getElementById("total").innerHTML = total;
-	}
-	else {
-		subtotal -= shirtPrice;
-		document.getElementById("subtotal").innerHTML = subtotal;
-		predatorInCart = false;
-		total = calcTotal(subtotal,tax)
-		document.getElementById("total").innerHTML = total;
-	}
-})
-
-addLogoToCart.addEventListener("click", function(){
-	if (logoInCart === false) {
-		subtotal += shirtPrice;
-		document.getElementById("subtotal").innerHTML = subtotal;
-		logoInCart = true;
-		total = calcTotal(subtotal,tax)
-		document.getElementById("total").innerHTML = total;
-	}
-	else {
-		subtotal -= shirtPrice;
-		document.getElementById("subtotal").innerHTML = subtotal;
-		logoInCart = false;
-		total = calcTotal(subtotal,tax)
-		document.getElementById("total").innerHTML = total;
-	}
-})
-
-//vars to grab selects
-var logoSelect = document.getElementById("logoColor");
-var spaceShipSelect = document.getElementById("spaceShipColor");
-var alienSelect = document.getElementById("alienColor");
-var predatorSelect = document.getElementById("predatorColor");
-var faceHuggerSelect = document.getElementById("faceHuggerColor");
-
-var logoSelect = document.getElementById("logoColor");
-
 //change backgroud color of select and product image
-logoSelect.addEventListener('change',function(e) {
+logoColor.addEventListener('change',function(e) {
   var color = e.target.selectedOptions[0].innerText;
 	switch(color) {
 	    case "Black":
@@ -151,7 +89,7 @@ logoSelect.addEventListener('change',function(e) {
 	}
 })
 
-spaceShipSelect.addEventListener('change',function(e) {
+spaceShipColor.addEventListener('change',function(e) {
   var color = e.target.selectedOptions[0].innerText;
 	switch(color) {
 	    case "Black":
@@ -179,7 +117,7 @@ spaceShipSelect.addEventListener('change',function(e) {
 	}
 })
 
-alienSelect.addEventListener('change',function(e) {
+alienColor.addEventListener('change',function(e) {
   var color = e.target.selectedOptions[0].innerText;
 	switch(color) {
 	    case "Black":
@@ -207,7 +145,7 @@ alienSelect.addEventListener('change',function(e) {
 	}
 })
 
-predatorSelect.addEventListener('change',function(e) {
+predatorColor.addEventListener('change',function(e) {
   var color = e.target.selectedOptions[0].innerText;
 	switch(color) {
 	    case "Black":
@@ -235,7 +173,7 @@ predatorSelect.addEventListener('change',function(e) {
 	}
 })
 
-faceHuggerSelect.addEventListener('change',function(e) {
+faceHuggerColor.addEventListener('change',function(e) {
   var color = e.target.selectedOptions[0].innerText;
 	switch(color) {
 	    case "Black":
@@ -261,4 +199,251 @@ faceHuggerSelect.addEventListener('change',function(e) {
 	    default:
 	         e.target.style.backgroundColor = "white";
 	}
+})
+
+//change number of items to add to cart
+logoNum.addEventListener('change',function(e){
+	var num = e.target.selectedOptions[0].innerText;
+	switch(num) {
+		case "1":
+			logo.numToAdd = 1;
+			break;
+		case "2":
+			logo.numToAdd = 2;
+			break;
+		case "3":
+			logo.numToAdd = 3;
+			break;
+		case "4":
+			logo.numToAdd = 4;
+			break;
+		case "5":
+			logo.numToAdd = 5;
+			break;
+		case "10":
+			logo.numToAdd = 10;
+			break;
+		case "15":
+			logo.numToAdd = 15;
+			break;
+		case "20":
+			logo.numToAdd = 20;
+			break;
+		case "25":
+			logo.numToAdd = 25;
+			break;
+		case "50":
+			logo.numToAdd = 50;
+			break;
+		default:
+			logo.numToAdd = 0;
+	}
+})
+
+spaceShipNum.addEventListener('change',function(e){
+	var num = e.target.selectedOptions[0].innerText;
+	switch(num) {
+		case "1":
+			spaceShip.numToAdd = 1;
+			break;
+		case "2":
+			spaceShip.numToAdd = 2;
+			break;
+		case "3":
+			spaceShip.numToAdd = 3;
+			break;
+		case "4":
+			spaceShip.numToAdd = 4;
+			break;
+		case "5":
+			spaceShip.numToAdd = 5;
+			break;
+		case "10":
+			spaceShip.numToAdd = 10;
+			break;
+		case "15":
+			spaceShip.numToAdd = 15;
+			break;
+		case "20":
+			spaceShip.numToAdd = 20;
+			break;
+		case "25":
+			spaceShip.numToAdd = 25;
+			break;
+		case "50":
+			spaceShip.numToAdd = 50;
+			break;
+		default:
+			spaceShip.numToAdd = 0;
+	}
+})
+
+alienNum.addEventListener('change',function(e){
+	var num = e.target.selectedOptions[0].innerText;
+	switch(num) {
+		case "1":
+			alien.numToAdd = 1;
+			break;
+		case "2":
+			alien.numToAdd = 2;
+			break;
+		case "3":
+			alien.numToAdd = 3;
+			break;
+		case "4":
+			alien.numToAdd = 4;
+			break;
+		case "5":
+			alien.numToAdd = 5;
+			break;
+		case "10":
+			alien.numToAdd = 10;
+			break;
+		case "15":
+			alien.numToAdd = 15;
+			break;
+		case "20":
+			alien.numToAdd = 20;
+			break;
+		case "25":
+			alien.numToAdd = 25;
+			break;
+		case "50":
+			alien.numToAdd = 50;
+			break;
+		default:
+			logo.numToAdd = 0;
+	}
+})
+
+predatorNum.addEventListener('change',function(e){
+	var num = e.target.selectedOptions[0].innerText;
+	switch(num) {
+		case "1":
+			predator.numToAdd = 1;
+			break;
+		case "2":
+			predator.numToAdd = 2;
+			break;
+		case "3":
+			predator.numToAdd = 3;
+			break;
+		case "4":
+			predator.numToAdd = 4;
+			break;
+		case "5":
+			predator.numToAdd = 5;
+			break;
+		case "10":
+			predator.numToAdd = 10;
+			break;
+		case "15":
+			predator.numToAdd = 15;
+			break;
+		case "20":
+			predator.numToAdd = 20;
+			break;
+		case "25":
+			predator.numToAdd = 25;
+			break;
+		case "50":
+			predator.numToAdd = 50;
+			break;
+		default:
+			predator.numToAdd = 0;
+	}
+})
+
+faceHuggerNum.addEventListener('change',function(e){
+	var num = e.target.selectedOptions[0].innerText;
+	switch(num) {
+		case "1":
+			faceHugger.numToAdd = 1;
+			break;
+		case "2":
+			faceHugger.numToAdd = 2;
+			break;
+		case "3":
+			faceHugger.numToAdd = 3;
+			break;
+		case "4":
+			faceHugger.numToAdd = 4;
+			break;
+		case "5":
+			faceHugger.numToAdd = 5;
+			break;
+		case "10":
+			faceHugger.numToAdd = 10;
+			break;
+		case "15":
+			faceHugger.numToAdd = 15;
+			break;
+		case "20":
+			faceHugger.numToAdd = 20;
+			break;
+		case "25":
+			faceHugger.numToAdd = 25;
+			break;
+		case "50":
+			faceHugger.numToAdd = 50;
+			break;
+		default:
+			faceHugger.numToAdd = 0;
+	}
+})
+
+//add event listeners to buttons to add them to the cart
+addFHToCart.addEventListener("click", function(){
+	if(faceHugger.numInCart === 0){
+		subtotal += (faceHugger.price * faceHugger.numToAdd).toFixed(2);
+		document.getElementById("subtotal").innerHTML = (subtotal);
+		total = calcTotal(subtotal,tax)
+		document.getElementById("total").innerHTML = total;
+		document.getElementById("cartStuff").innerHTML += cartAdd(faceHugger);
+		cartItems.push[faceHugger];
+		faceHugger.numInCart += faceHugger.numToAdd;
+	}
+	else {
+		faceHugger.numInCart += faceHugger.numToAdd;
+		document.getElementById("faceHuggerInCart").innerHTML = faceHugger.numInCart;
+		subtotal += ((faceHugger.numToAdd * faceHugger.price ).toFixed(2));
+		total += (subtotal * tax).toFixed(2);
+		document.getElementById("subtotal").innerHTML = (subtotal.toFixed(2));
+		document.getElementById("total").innerHTML = total;
+	}
+})
+
+addSpaceShipToCart.addEventListener("click", function(){
+	subtotal += (spaceShip.price * spaceShip.numToAdd);
+	spaceShip.numInCart += spaceShip.numToAdd;
+	document.getElementById("subtotal").innerHTML = (subtotal.toFixed(2));
+	faceHuggerInCart = true;
+	total = calcTotal(subtotal,tax)
+	document.getElementById("total").innerHTML = total;
+})
+
+addAlienToCart.addEventListener("click", function(){
+	subtotal += (alien.price * alien.numToAdd);
+	alien.numInCart += alien.numToAdd;
+	document.getElementById("subtotal").innerHTML = (subtotal.toFixed(2));
+	faceHuggerInCart = true;
+	total = calcTotal(subtotal,tax)
+	document.getElementById("total").innerHTML = total;
+})
+
+addPredatorToCart.addEventListener("click", function(){
+	subtotal += (predator.price * predator.numToAdd);
+	predator.numInCart += predator.numToAdd;
+	document.getElementById("subtotal").innerHTML = (subtotal.toFixed(2));
+	faceHuggerInCart = true;
+	total = calcTotal(subtotal,tax)
+	document.getElementById("total").innerHTML = total;
+})
+
+addLogoToCart.addEventListener("click", function(){
+		subtotal += (logo.price * logo.numToAdd);
+		logo.numInCart += logo.numToAdd;
+		document.getElementById("subtotal").innerHTML = (subtotal.toFixed(2));
+		total = calcTotal(subtotal,tax)
+		document.getElementById("total").innerHTML = total;
 })
