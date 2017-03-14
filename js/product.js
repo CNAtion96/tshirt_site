@@ -6,13 +6,8 @@ var addPredatorToCart = document.getElementById("addPredatorToCart");
 var addLogoToCart = document.getElementById("addLogoToCart");
 
 //set shirt price and initiate subtotal, total, and tax variables
-localStorage.setItem('subtotal','0');
-localStorage.setItem('total', '0');
-var subtotalStorage = localStorage.getItem('subtotal');
-var totalStorage = localStorage.getItem('total');
-var subtotal = 0;
-var total = 0;
-var tax = 1.065;
+var subtotalBox = document.getElementById("subtotal");
+var totalBox = document.getElementById("total")
 
 //vars to grab selects (color & number)
 //colors
@@ -47,13 +42,6 @@ faceHugger = new shirt("Face Hugger","black",19.99, 0, 0);
 //array to hold items in cart
 var cartItems = [];
 
-//add items to cart div
-function cartAdd(){
-	string = '';
-	cartItems.forEach(function(item){
-		string += '<div class="cartitem"><p>${item.name}</p><p>${item.price}</p><p id="${item}InCart">${item.numInCart}</p></div>';
-	})
-}
 
 //fuction to calculate the after tax total
 function calcTotal(totalSub, taxes) {
@@ -392,58 +380,38 @@ faceHuggerNum.addEventListener('change',function(e){
 	}
 })
 
+//add items to cart div
+function cartAdd(){
+	subtotal = 0;
+	cartItems.forEach(function(item){
+		subtotal += item.price * item.numToAdd;
+	})
+	subtotalBox.innerHTML = subtotal.toFixed(2);
+	var total = subtotal*1.065;
+	totalBox.innerHTML = total.toFixed(2);
+}
+
 //add event listeners to buttons to add them to the cart
 addFHToCart.addEventListener("click", function(){
-	if(faceHugger.numInCart === 0){
-		subtotal += (faceHugger.price * faceHugger.numToAdd).toFixed(2);
-		document.getElementById("subtotal").innerHTML = (subtotal);
-		total = calcTotal(subtotal,tax)
-		document.getElementById("total").innerHTML = total;
-		document.getElementById("cartStuff").innerHTML += cartAdd(faceHugger);
-		cartItems.push[faceHugger];
-		faceHugger.numInCart += faceHugger.numToAdd;
-	}
-	else {
-		faceHugger.numInCart += faceHugger.numToAdd;
-		document.getElementById("faceHuggerInCart").innerHTML = faceHugger.numInCart;
-		subtotal += ((faceHugger.numToAdd * faceHugger.price ).toFixed(2));
-		total += (subtotal * tax).toFixed(2);
-		document.getElementById("subtotal").innerHTML = (subtotal.toFixed(2));
-		document.getElementById("total").innerHTML = total;
-	}
+	cartItems.push(faceHugger);
+	cartAdd();
 })
 
 addSpaceShipToCart.addEventListener("click", function(){
-	subtotal += (spaceShip.price * spaceShip.numToAdd);
-	spaceShip.numInCart += spaceShip.numToAdd;
-	document.getElementById("subtotal").innerHTML = (subtotal.toFixed(2));
-	faceHuggerInCart = true;
-	total = calcTotal(subtotal,tax)
-	document.getElementById("total").innerHTML = total;
+	cartItems.push(spaceShip);
+	cartAdd();
 })
 
 addAlienToCart.addEventListener("click", function(){
-	subtotal += (alien.price * alien.numToAdd);
-	alien.numInCart += alien.numToAdd;
-	document.getElementById("subtotal").innerHTML = (subtotal.toFixed(2));
-	faceHuggerInCart = true;
-	total = calcTotal(subtotal,tax)
-	document.getElementById("total").innerHTML = total;
+	cartItems.push(alien);
+	cartAdd();
 })
 
 addPredatorToCart.addEventListener("click", function(){
-	subtotal += (predator.price * predator.numToAdd);
-	predator.numInCart += predator.numToAdd;
-	document.getElementById("subtotal").innerHTML = (subtotal.toFixed(2));
-	faceHuggerInCart = true;
-	total = calcTotal(subtotal,tax)
-	document.getElementById("total").innerHTML = total;
+	cartItems.push(predator);
+	cartAdd();
 })
-
 addLogoToCart.addEventListener("click", function(){
-		subtotal += (logo.price * logo.numToAdd);
-		logo.numInCart += logo.numToAdd;
-		document.getElementById("subtotal").innerHTML = (subtotal.toFixed(2));
-		total = calcTotal(subtotal,tax)
-		document.getElementById("total").innerHTML = total;
+	cartItems.push(logo);
+	cartAdd();
 })
